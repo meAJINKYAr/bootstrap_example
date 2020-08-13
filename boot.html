@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+                $('#form1').submit(function(){
+                    // show that something is loading
+                    $("#cls").click();
+                    $('#demo').html("<b>wait a sec...</b>");
+
+                    setTimeout(() => {
+                        $('#demo').show();
+                    }, 300);
+                    
+                    // Call ajax for pass data to other place
+                    $.ajax({
+                        type: 'POST',
+                        url: 'index.php',
+                        data: $(this).serialize() // getting filed value in serialize form
+                    })
+
+                    .done(function(data){ // if getting done then call.
+                        // show the response
+                        setTimeout(() => {
+                            $('#res').html(data);
+                        }, 1000);
+
+                        setTimeout(() => {
+                            $('#demo').html("Redirecting to Demo Landing Page...");
+                            window.location.assign("demo.html");
+                        }, 6000); 
+                    })
+
+                    .fail(function() { // if fail then getting message
+                        // just in case posting your form failed
+                        alert( "Can't SIGN IN. Try Again..." );
+                    
+                    });
+                    // to prevent refreshing the whole page page
+                    return false;
+                });
+            });
+        </script>
+    </head>
+    <body class="p-3">
+        <div class="container  border p-3">
+
+            <h2 class="font-italic text-center text-white bg-dark p-3">RESTOBUD</h2>
+
+            <ul class="nav nav-pills nav-justified justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#info1">INFO 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#info2">INFO 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#info3">INFO 3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#info4">INFO 4</a>
+                </li>
+            </ul>
+            <hr>
+
+
+            <div class="tab-content">
+                <div class="tab-pane container active" id="info1">
+
+                    <div class="jumbotron p-3">
+                        <h3>IMP INFO</h3>
+                        <br><br><br><br>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">SIGN IN</button> 
+                    <br>
+                    <h4 id="demo" align="center"></h4>
+                    <br>
+                    <h3 id="res" align="center">RESULT</h3>
+                </div>
+                <div class="tab-pane container fade" id="info2">
+
+                    <div class="container">
+                        <h4 class="text-center">INFO 2</h4>
+                        <div class="row">
+                            <div class="col-sm-6 border my-3 p-3">
+                                col 1
+                            </div>
+                            <div class="col-sm-6 border my-3 p-3">
+                                col 2
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane container fade" id="info3">
+
+                    <div class="container-fluid p-3">
+                        <h4 class="text-center">INFO 3</h4>
+                        <div class="card-columns">
+                            
+                            <div class="card">
+                                <img src="img1.png" alt="PROFILE IMG" class="rounded-circle justify-content-center p-3">
+                                <div class="card-header">HEADER</div>
+                                <div class="card-body">BODY</div>
+                                <div class="card-footer">FOOTER</div>
+                            </div>
+        
+                            <div class="card">
+                                <img src="img2.jpg" alt="PROFILE IMG" class="rounded-circle justify-content-center p-3">
+                                <div class="card-header">HEADER</div>
+                                <div class="card-body">BODY</div>
+                                <div class="card-footer">FOOTER</div>
+                            </div>
+        
+                            <div class="card">
+                                <img src="img3.png" alt="PROFILE IMG" class="rounded-circle justify-content-center p-3">
+                                <div class="card-header">HEADER</div>
+                                <div class="card-body">BODY</div>
+                                <div class="card-footer">FOOTER</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+        
+                </div>
+                <div class="tab-pane container fade" id="info4">
+                    <h3>Some more info....</h3>
+                </div>
+            </div>
+
+            <div class="modal" name="mymodal" id="mymodal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            SIGN IN FORM 
+                            <button type="button" class="close" data-dismiss="modal">&times;</button> 
+                        </div>
+                        <div class="modal-body">
+                            <h5>Please Enter Login Details...</h5>
+                            <form class="form" name="form1" id="form1">
+                                <label for="uname">Username</label>
+                                <input type="text" class="form-control" name="uname" id="uname" placeholder="username...">
+                                <label for="pass">Password</label>
+                                <input type="password" class="form-control" name="pass" id="pass" placeholder="password...">
+                                <br>
+                                <button type="submit" class="btn btn-success">SIGN IN</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="close" data-dismiss="modal" id="cls">close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container p-3">
+            <div class="row p-2">
+                <div class="col border">col1 <br><br><br><br><br><br></div>
+                <div class="col border">col2 <br><br><br><br><br><br></div>
+                <div class="col border">col2 <br><br><br><br><br><br></div>
+                <div class="col border">col2 <br><br><br><br><br><br></div>
+            </div>
+            <div class="col p-2">
+                <div class="row border p-2">col1 <br><br></div>
+                <br>
+                <div class="row border p-2">col2 <br><br></div>
+            </div>
+        </div>
+    </body>
+</html>
