@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
-/*
-$servername="";
-$username="";
+
+$servername="localhost";
+$username="root";
 $password="";
 $db="";
 
@@ -13,7 +13,7 @@ if($conn->connect_error){
 else{
     //echo("<html><script>window.alert('Connected to database $db');</script></html>");
 }
-*/
+
 ?>
 <html>
     <head>
