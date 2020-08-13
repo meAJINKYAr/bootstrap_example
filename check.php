@@ -31,7 +31,7 @@ else{
         echo "PASS: ".$pass;
         echo "<hr>";
         ?>
-        <a href="boot.html"><button>CANCEL SIGN IN</button></a>
+        <a href="index.html"><button>CANCEL SIGN IN</button></a>
         <h5 >You have <span id="timer"></span> sec</h5>
         <script>
             var myVar = setInterval(myTimer,1000);
