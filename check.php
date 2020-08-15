@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-/*
+
 $servername="localhost";
 $username="root";
 $password="";
@@ -13,7 +13,7 @@ if($conn->connect_error){
 else{
     //echo("<html><script>window.alert('Connected to database $db');</script></html>");
 }
-*/
+
 ?>
 <html>
     <head>
@@ -37,12 +37,12 @@ else{
             var myVar = setInterval(myTimer,1000);
             var t= 6;
             function myTimer() {
-            var d = new Date();
-            document.getElementById("timer").innerHTML = t-1;
-            t=t-1;
-            if(t<=0){
-                clearTimeout(myVar);
-            }
+                var d = new Date();
+                document.getElementById("timer").innerHTML = t-1;
+                t=t-1;
+                if(t<=0){
+                    clearTimeout(myVar);
+                }
             }
         </script>
     </body>
