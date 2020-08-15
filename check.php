@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-
+/*
 $servername="localhost";
 $username="root";
 $password="";
@@ -13,7 +13,7 @@ if($conn->connect_error){
 else{
     //echo("<html><script>window.alert('Connected to database $db');</script></html>");
 }
-
+*/
 ?>
 <html>
     <head>
